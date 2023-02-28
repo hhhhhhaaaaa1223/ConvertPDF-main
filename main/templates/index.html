@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Upload Folder</title>
+    </head>
+    <body>
+        <h1>Upload Folder</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="text" name="foldername" placeholder="Enter folder name">
+            <br><br>
+            <input type="file" name="file" webkitdirectory directory>
+            <br><br>
+            <input type="submit" value="Upload">
+        </form>
+        {% if contents %}
+        <hr>
+        <pre>{{ contents }}</pre>
+      {% endif %}
+        <a href="/download">Tải về</a>
+    </body>
+</html>

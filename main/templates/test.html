@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask File Reader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>File Upload Example</title>
+    <script>
+      function showFileName() {
+        var inputFile = document.getElementById('inputFile');
+        var fileName = inputFile.value.split('\\').pop();
+        var label = document.getElementById('fileLabel');
+        label.innerHTML = fileName;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container mt-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Kiểm tra kết quả</h2>
+          </div>
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="file">Chọn folder:</label>
+                <input type="file" class="form-control-file" id="file" name="file" multiple onchange="showFileName()">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="card mt-5">
+          <div class="card-header">
+            <h2 class="text-center">Kết quả</h2>
+          </div>
+          <div class="card-body">
+            <pre id="file-content"></pre>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+
+    <!-- <h1>File Upload Example</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" id="inputFile" onchange="showFileName()">
+      <label for="inputFile" id="fileLabel">Choose a file</label>
+      <br>
+      <input type="submit" value="Submit">
+    </form> -->
+    {% if session.get('file_content') %}
+      <pre>{{ session['file_content'] }}</pre>
+    {% endif %}
+  </body>
+</html>
+
